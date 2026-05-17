@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JDOC MedStore — Урилга</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Cinzel:wght@400;600&family=Great+Vibes&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+background: #d6e4f0;
+min-height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 40px 16px;
+background-image:
+radial-gradient(ellipse at 20% 10%, #bdd5ea 0%, transparent 55%),
+radial-gradient(ellipse at 80% 90%, #c2d8ec 0%, transparent 55%);
+}
+
+/* ═══════════ CARD ═══════════ */
+.card {
+width: 100%;
+max-width: 460px;
+background: #fafcff;
+border-radius: 4px;
+box-shadow:
+0 2px 6px rgba(30,60,120,0.08),
+0 20px 60px rgba(30,60,120,0.18),
+0 40px 100px rgba(30,60,120,0.1);
+position: relative;
+overflow: hidden;
+}
+
+/* ═══════════ WATERCOLOR TOP SPLASH ═══════════ */
+.splash-area {
+position: relative;
+height: 300px;
+overflow: hidden;
+background: #eef4fb;
+}
+
+/* Watercolor paint SVG background */
+.splash-area svg.wc-bg {
+position: absolute;
+inset: 0;
+width: 100%;
+height: 100%;
+}
+
+/* Logo centered over splash */
+.logo-center {
+position: absolute;
+inset: 0;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+z-index: 10;
+}
+
+.logo-white-box {
+width: 90px;
+height: 90px;
+background: white;
+border-radius: 22px;
+display: flex;
+align-items: center;
+justify-content: center;
+box-shadow:
+0 8px 32px rgba(30,60,120,0.18),
+0 2px 8px rgba(30,60,120,0.1);
+padding: 10px;
+margin-bottom: 14px;
+}
+.logo-white-box img {
+width: 100%;
+height: 100%;
+object-fit: contain;
+}
+
+.logo-name-over {
+font-family: ‘Cinzel’, serif;
+font-size: 1.5rem;
+font-weight: 600;
+color: #1a3870;
+letter-spacing: 3px;
+text-shadow: 0 2px 12px rgba(255,255,255,0.9);
+}
+.logo-tagline-over {
+font-family: ‘Lato’, sans-serif;
+font-weight: 300;
+font-size: 0.62rem;
+letter-spacing: 4px;
+text-transform: uppercase;
+color: #4a6898;
+margin-top: 5px;
+text-shadow: 0 1px 8px rgba(255,255,255,0.8);
+}
+
+/* ═══════════ BODY ═══════════ */
+.body {
+padding: 36px 40px 40px;
+background: #fafcff;
+text-align: center;
+position: relative;
+}
+
+/* thin top rule */
+.body::before {
+content: ‘’;
+display: block;
+width: 48px;
+height: 2px;
+background: linear-gradient(90deg, transparent, #2457b5, transparent);
+margin: 0 auto 28px;
+}
+
+/* ── Label ── */
+.pre-label {
+font-family: ‘Lato’, sans-serif;
+font-weight: 300;
+font-size: 0.6rem;
+letter-spacing: 5px;
+text-transform: uppercase;
+color: #7090bb;
+margin-bottom: 14px;
+}
+
+/* ── Script headline ── */
+.script-headline {
+font-family: ‘Great Vibes’, cursive;
+font-size: 3rem;
+color: #1a3870;
+line-height: 1.05;
+margin-bottom: 8px;
+}
+
+/* ── Serif subheading ── */
+.serif-sub {
+font-family: ‘Cinzel’, serif;
+font-size: 0.75rem;
+letter-spacing: 4px;
+color: #2457b5;
+text-transform: uppercase;
+margin-bottom: 28px;
+}
+
+/* ── Thin divider with diamond ── */
+.divider {
+display: flex;
+align-items: center;
+gap: 10px;
+margin: 0 auto 28px;
+max-width: 300px;
+}
+.divider .rule {
+flex: 1;
+height: 0.5px;
+background: #bfcfe8;
+}
+.divider .gem {
+font-size: 0.55rem;
+color: #2457b5;
+letter-spacing: 4px;
+}
+
+/* ── Invitation body text ── */
+.invite-body {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 1.05rem;
+font-weight: 300;
+color: #3a4a6a;
+line-height: 1.85;
+margin-bottom: 32px;
+font-style: italic;
+}
+.invite-body strong {
+font-style: normal;
+font-weight: 600;
+color: #1a3870;
+}
+
+/* ── Details block ── */
+.details-block {
+background: white;
+border: 0.5px solid #d0ddf0;
+border-radius: 2px;
+padding: 28px 32px;
+margin-bottom: 28px;
+position: relative;
+}
+
+/* Corner ornaments */
+.details-block::before,
+.details-block::after {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 1.1rem;
+color: #c0cfe8;
+position: absolute;
+line-height: 1;
+}
+.details-block::before {
+content: ‘✦’;
+top: 8px;
+left: 10px;
+}
+.details-block::after {
+content: ‘✦’;
+bottom: 8px;
+right: 10px;
+}
+
+.detail-item {
+margin-bottom: 20px;
+}
+.detail-item:last-child {
+margin-bottom: 0;
+}
+.detail-label {
+font-family: ‘Lato’, sans-serif;
+font-size: 0.55rem;
+letter-spacing: 4px;
+text-transform: uppercase;
+color: #8099cc;
+margin-bottom: 6px;
+}
+.detail-value {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 1.2rem;
+font-weight: 600;
+color: #1a3870;
+line-height: 1.4;
+}
+
+.detail-thin-rule {
+width: 30px;
+height: 0.5px;
+background: #c8d8f0;
+margin: 18px auto;
+}
+
+/* ── Closing line ── */
+.closing {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 0.9rem;
+font-weight: 300;
+color: #7088aa;
+letter-spacing: 1px;
+margin-bottom: 28px;
+font-style: italic;
+}
+
+/* ── Footer logo row ── */
+.footer-row {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 10px;
+padding-top: 20px;
+border-top: 0.5px solid #d8e4f4;
+}
+.footer-logo-img {
+width: 30px;
+height: 30px;
+object-fit: contain;
+border-radius: 7px;
+padding: 2px;
+background: white;
+box-shadow: 0 2px 8px rgba(30,60,120,0.1);
+}
+.footer-brand {
+font-family: ‘Cinzel’, serif;
+font-size: 0.75rem;
+letter-spacing: 2.5px;
+color: #2457b5;
+}
+
+/* ── Bottom edge stripe ── */
+.bottom-edge {
+height: 5px;
+background: linear-gradient(90deg, #1a3870 0%, #2457b5 40%, #5b9ad4 60%, #2457b5 80%, #1a3870 100%);
+}
+</style>
+
+</head>
+<body>
+
+<div class="card">
+
+  <!-- WATERCOLOR SPLASH TOP -->
+
+  <div class="splash-area">
+
+```
+<!-- Watercolor SVG background -->
+<svg class="wc-bg" viewBox="0 0 460 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="blur1">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+    <filter id="blur2">
+      <feGaussianBlur stdDeviation="24"/>
+    </filter>
+    <filter id="blur3">
+      <feGaussianBlur stdDeviation="10"/>
+    </filter>
+  </defs>
+
+  <!-- Base -->
+  <rect width="460" height="300" fill="#ddeaf8"/>
+
+  <!-- Large main watercolor blob — deep blue -->
+  <ellipse cx="230" cy="130" rx="220" ry="155" fill="#2a5aaa" opacity="0.55" filter="url(#blur2)"/>
+
+  <!-- Mid tone blob -->
+  <ellipse cx="180" cy="80" rx="160" ry="110" fill="#3a7fd4" opacity="0.4" filter="url(#blur2)"/>
+
+  <!-- Light blue upper left -->
+  <ellipse cx="60" cy="60" rx="130" ry="90" fill="#5ba8e8" opacity="0.3" filter="url(#blur1)"/>
+
+  <!-- Upper right accent -->
+  <ellipse cx="400" cy="50" rx="100" ry="80" fill="#1a4a90" opacity="0.35" filter="url(#blur1)"/>
+
+  <!-- Soft highlight center -->
+  <ellipse cx="230" cy="120" rx="100" ry="70" fill="#7ab8f0" opacity="0.25" filter="url(#blur2)"/>
+
+  <!-- Bottom dark anchor -->
+  <ellipse cx="230" cy="280" rx="240" ry="80" fill="#1a3870" opacity="0.5" filter="url(#blur1)"/>
+
+  <!-- Soft white glow center for logo legibility -->
+  <ellipse cx="230" cy="150" rx="130" ry="90" fill="white" opacity="0.22" filter="url(#blur2)"/>
+
+  <!-- Gold/warm accent splashes -->
+  <ellipse cx="80" cy="220" rx="70" ry="50" fill="#c8a84a" opacity="0.12" filter="url(#blur2)"/>
+  <ellipse cx="390" cy="230" rx="60" ry="45" fill="#c8a84a" opacity="0.1" filter="url(#blur2)"/>
+
+  <!-- Small scattered texture dots -->
+  <circle cx="40" cy="30" r="18" fill="#2457b5" opacity="0.18" filter="url(#blur3)"/>
+  <circle cx="420" cy="270" r="22" fill="#3a7fd4" opacity="0.15" filter="url(#blur3)"/>
+  <circle cx="430" cy="40" r="14" fill="#5ba8e8" opacity="0.18" filter="url(#blur3)"/>
+  <circle cx="30" cy="270" r="16" fill="#1a3870" opacity="0.2" filter="url(#blur3)"/>
+
+  <!-- Wave bottom fade -->
+  <path d="M0,230 Q115,200 230,230 Q345,260 460,230 L460,300 L0,300 Z" fill="#fafcff" opacity="0.92"/>
+  <path d="M0,250 Q115,225 230,250 Q345,275 460,250 L460,300 L0,300 Z" fill="#fafcff"/>
+</svg>
+
+<!-- Logo centered -->
+<div class="logo-center">
+  <div class="logo-white-box">
+    <!-- Custom SVG Logo: brain + pen/scalpel + JDOC -->
+    <svg viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+      <!-- Brain left hemisphere -->
+      <path d="M28,38 C24,34 22,28 26,24 C29,21 33,21 36,23 C36,20 38,18 41,18 C44,18 46,20 46,23 L46,55 C43,57 39,57 36,55 C33,57 29,57 26,54 C22,51 22,45 26,42 Z"
+            fill="none" stroke="#1a3870" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M32,28 C30,30 30,34 32,36" fill="none" stroke="#1a3870" stroke-width="1.1" stroke-linecap="round"/>
+      <path d="M36,32 C34,35 34,40 36,43" fill="none" stroke="#1a3870" stroke-width="1.1" stroke-linecap="round"/>
+      <path d="M28,42 C30,41 33,42 34,44" fill="none" stroke="#1a3870" stroke-width="1" stroke-linecap="round"/>
+      <!-- Brain right hemisphere (filled) -->
+      <path d="M46,23 C46,20 48,18 51,18 C54,18 56,20 56,23 C59,21 63,21 66,24 C70,28 68,34 64,38 C68,42 68,51 64,54 C61,57 57,57 54,55 C51,57 47,57 46,55 Z"
+            fill="#1a3870" opacity="0.12" stroke="#1a3870" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M56,28 C58,30 58,34 56,36" fill="none" stroke="#1a3870" stroke-width="1.1" stroke-linecap="round"/>
+      <path d="M52,32 C54,35 54,40 52,43" fill="none" stroke="#1a3870" stroke-width="1.1" stroke-linecap="round"/>
+      <path d="M60,42 C58,41 55,42 54,44" fill="none" stroke="#1a3870" stroke-width="1" stroke-linecap="round"/>
+      <!-- Center divider -->
+      <line x1="46" y1="18" x2="46" y2="55" stroke="#1a3870" stroke-width="1.2" stroke-dasharray="2,2"/>
+      <!-- Scalpel / pen diagonal -->
+      <g transform="rotate(-40, 45, 38)">
+        <rect x="43" y="14" width="4" height="26" rx="2" fill="#2457b5"/>
+        <polygon points="43,40 47,40 45,47" fill="#1a3870"/>
+        <rect x="46" y="16" width="1.5" height="18" rx="0.5" fill="#5b8ad4"/>
+        <rect x="43" y="12" width="4" height="4" rx="1.5" fill="#3a6aaa"/>
+      </g>
+      <!-- JDOC text -->
+      <text x="45" y="67" text-anchor="middle"
+            font-family="Georgia, serif" font-weight="700" font-size="11"
+            letter-spacing="1.5" fill="#1a3870">JDOC</text>
+      <text x="45" y="77" text-anchor="middle"
+            font-family="Georgia, serif" font-weight="400" font-size="7"
+            letter-spacing="2" fill="#4a6898">MedStore</text>
+    </svg>
+  </div>
+  <div class="logo-name-over">J.DOC MedStore</div>
+  <div class="logo-tagline-over" style="max-width:220px;text-align:center;line-height:1.8;">Эмч, эмнэлгийн ажилчид<br>болон ажлын хувцасны ажилчид</div>
+</div>
+```
+
+  </div>
+
+  <!-- BODY -->
+
+  <div class="body">
+
+```
+<div class="pre-label">Албан ёсны урилга</div>
+
+<div class="script-headline">Нээлтийн баяр</div>
+
+<div class="serif-sub">J.DOC MedStore</div>
+
+<div class="divider">
+  <div class="rule"></div>
+  <div class="gem">— — —</div>
+  <div class="rule"></div>
+</div>
+
+<p class="invite-body">
+  <strong>J.DOC MedStore</strong> дэлгүүрийн нээлтийн<br>
+  ёслол дээр та бүхнийг<br>
+  <strong>хүндэт зочин</strong> болохыг урьж байна.
+</p>
+
+<!-- Details -->
+<div class="details-block">
+  <div class="detail-item">
+    <div class="detail-label">Огноо</div>
+    <div class="detail-value">2026 оны 5-р сарын 24<br><span style="font-size:1rem;font-weight:400;color:#2457b5;">Цаг 14:00</span></div>
+  </div>
+  <div class="detail-thin-rule"></div>
+  <div class="detail-item">
+    <div class="detail-label">Байршил</div>
+    <div class="detail-value">НЭ-ийн урьд<br>Манай төв орон сууцны 0 давхарт</div>
+  </div>
+</div>
+
+<p class="closing">Хамт олноороо морилно уу.</p>
+
+<div class="footer-row">
+  <svg viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg" class="footer-logo-img" style="background:white;padding:3px;border-radius:7px;">
+    <path d="M28,38 C24,34 22,28 26,24 C29,21 33,21 36,23 C36,20 38,18 41,18 C44,18 46,20 46,23 L46,55 C43,57 39,57 36,55 C33,57 29,57 26,54 C22,51 22,45 26,42 Z" fill="none" stroke="#1a3870" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M32,28 C30,30 30,34 32,36" fill="none" stroke="#1a3870" stroke-width="1.2" stroke-linecap="round"/>
+    <path d="M46,23 C46,20 48,18 51,18 C54,18 56,20 56,23 C59,21 63,21 66,24 C70,28 68,34 64,38 C68,42 68,51 64,54 C61,57 57,57 54,55 C51,57 47,57 46,55 Z" fill="#1a3870" opacity="0.12" stroke="#1a3870" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="46" y1="18" x2="46" y2="55" stroke="#1a3870" stroke-width="1.2" stroke-dasharray="2,2"/>
+    <g transform="rotate(-40, 45, 38)"><rect x="43" y="14" width="4" height="26" rx="2" fill="#2457b5"/><polygon points="43,40 47,40 45,47" fill="#1a3870"/></g>
+    <text x="45" y="67" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="11" letter-spacing="1.5" fill="#1a3870">JDOC</text>
+    <text x="45" y="77" text-anchor="middle" font-family="Georgia,serif" font-size="7" letter-spacing="2" fill="#4a6898">MedStore</text>
+  </svg>
+  <div class="footer-brand">J.DOC · MEDSTORE</div>
+</div>
+```
+
+  </div>
+
+  <div class="bottom-edge"></div>
+</div>
+
+</body>
+</html>
